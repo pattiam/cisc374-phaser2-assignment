@@ -51,6 +51,7 @@ export default class MainScene extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, this.platforms);
+        this.cursors = this.input.keyboard?.createCursorKeys();
 
         const message = `Phaser v${Phaser.VERSION}`;
         this.add
@@ -72,12 +73,12 @@ export default class MainScene extends Phaser.Scene {
             this.player?.setVelocityX(160);
             this.player?.anims.play("right", true);
         } else {
-            this.player?.setVelocity(0);
+            this.player?.setVelocityX(0);
             this.player?.anims.play("turn");
         }
 
         if (this.cursors.up?.isDown && this.player?.body?.touching.down) {
-            this.player.setVelocity(-330);
+            this.player.setVelocityY(-330);
         }
     }
 }
