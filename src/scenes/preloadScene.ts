@@ -1,8 +1,6 @@
 import Phaser from "phaser";
 
 export default class PreloadScene extends Phaser.Scene {
-    private platforms?: Phaser.Physics.Arcade.StaticGroup;
-
     constructor() {
         super({ key: "PreloadScene" });
     }
@@ -20,17 +18,5 @@ export default class PreloadScene extends Phaser.Scene {
 
     create() {
         this.scene.start("MainScene");
-
-        this.platforms = this.physics.add.staticGroup();
-        const ground = this.platforms.create(
-            400,
-            458,
-            "ground"
-        ) as Phaser.Physics.Arcade.Sprite;
-        ground.setScale(2).refreshBody();
-
-        this.platforms.create(600, 400, "ground");
-        this.platforms.create(50, 250, "ground");
-        this.platforms.create(750, 250, "ground");
     }
 }
